@@ -3,7 +3,7 @@ from services.house_management.data.dao.house_dao import HouseDAO
 
 async def create_house():
     # Access to db here to create house then return new house json object
-    return HouseDAO.from_json({
+    assert HouseDAO.from_json({
         'owner_id': 1,
         'country': 'Viet Nam',
         'city': 'HCM',
