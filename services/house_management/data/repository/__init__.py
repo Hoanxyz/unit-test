@@ -1,0 +1,1 @@
+from .house_repository_impl import HouseRepositoryImpl

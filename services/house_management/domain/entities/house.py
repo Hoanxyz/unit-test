@@ -1,5 +1,18 @@
 class House:
-    def __init__(self, id: int, owner_id: int, country: str, city: str, district: str, address_detail: str, note: str, house_status: int, house_type_id: int) -> None:
+    def __init__(
+            self,
+            id: int,
+            owner_id: int,
+            country: str,
+            city: str,
+            district: str,
+            address_detail: str,
+            note: str,
+            house_status: int,
+            house_type_id: int,
+            price: float,
+            special_price: float
+    ) -> None:
         self.id = id
         self.owner_id = owner_id
         self.country = country
@@ -9,3 +22,5 @@ class House:
         self.note = note
         self.house_status = house_status
         self.house_type_id = house_type_id
+        self.price = price
+        self.special_price = special_price

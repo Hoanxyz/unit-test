@@ -7,9 +7,10 @@ from ...domain.repository.house_repository import HouseRepository
 from core.modules.message_broker.kafka.message_broker_kafka_impl import MessageBrokerKafkaImpl
 from kink import inject
 
+
 @inject
 class HouseRepositoryImpl(HouseRepository):
-    def __init__(self, messageBroker = MessageBrokerKafkaImpl) -> None:
+    def __init__(self, messageBroker=MessageBrokerKafkaImpl) -> None:
         super().__init__()
         self.messageBroker = messageBroker
         self.house_dao = HouseDAO(
@@ -21,7 +22,9 @@ class HouseRepositoryImpl(HouseRepository):
             'Ba Trieu',
             'my note',
             1,
-            1
+            1,
+            10,
+            9
         )
 
     async def get_house_by_id(self, id):
@@ -34,9 +37,11 @@ class HouseRepositoryImpl(HouseRepository):
             'address_detail': 'Duong Dinh Nghe',
             'note': 'my note',
             'house_status': 1,
-            'house_type_id': 1
+            'house_type_id': 1,
+            'price': 10,
+            'special_price': 9
         })
-        
+
     async def create_house(self, str):
         # Access to db here to create house then return new house json object
         return HouseDAO.from_json({
@@ -47,8 +52,16 @@ class HouseRepositoryImpl(HouseRepository):
             'address_detail': 'Ba Trieu',
             'note': 'my note',
             'house_status': 1,
-            'house_type_id': 1
+            'house_type_id': 1,
+            'price': 10,
+            'special_price': 9
         })
-    
+
     async def send_house_to_queue(self, topic, house):
         await self.messageBroker.send(topic=topic, service=house)
+    
+    def get_owner_id(house):
+        return house.owner_id
+    
+    def get_country(house):
+        return house.country

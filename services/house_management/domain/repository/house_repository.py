@@ -15,4 +15,6 @@ class HouseRepository:
     async def send_house_to_queue(self, topic, house):
         raise NotImplementedError()
 
-        
+    def get_discount(house):
+        raise NotImplementedError()
+
